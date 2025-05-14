@@ -33,6 +33,7 @@ knitr::include_graphics("Screenshots/Screenshot2.png")
 ```
 
 
+
 2.To initialize a new Git repository in the current directory, I run the command "git init" in the terminal. This command sets up Git tracking by creating a hidden subdirectory named .git, which contains all the files and metadata Git needs to manage the repository. From this point on, the folder becomes a Git repository, and you can start adding files, committing changes, and collaborating using Git.
 
 3. Not all files in a project should be tracked by Git—for example, temporary or system-specific files like the ".Rproj.user/" folder in RStudio. To prevent Git from tracking such files, I created a special text file named .gitignore in the root directory of my project. 
@@ -40,7 +41,53 @@ In this file,I add the line ".Rproj.user/" to tell Git to ignore that folder and
 
 4. Next I add the files using the command "git add ." and commit them using the command "git commit -m 'Initial push' "
 
-STEP 4 AND STEP 5 ARE MISSING 
+5. I created a new repository on GitHub without initializing it with a README, .gitignore, or license. Then, I copied the repository’s SSH URL to link it with my local project.
 
-THEY ARE PREST IN TEST BRANCH 
+6. I used "git branch" to view all the branches in my repository and identify the currently active one, which is marked with an asterisk. This helps me manage different lines of development. Then, I ran "git log --oneline" to see a simplified history of commits, where each commit is displayed on a single line with its short hash and message. This command makes it easy to quickly review the commit history in a compact format.
+
+7. I linked my local repository to the remote GitHub repository using : "git remote add origin git@github.com:serl0001/ETC5513Assignment2.git"
+
+8. And I push the entire folder to the git repository using the command "git push -u origin master" which will now present all our files in the gir repository.
+
+
+### Step 3 : Initialising Git and Pushing it to GitHub
+
+1. I Opened my terminal and ran the command : "git switch -c testbranch" . This creates a new branch called testbranch and switches to it.
+
+2. In the example.qmd in RStudio I add a few changes and save the document. 
+
+3. Then I add and commit the modified files using the commands: "git add example.qmd
+git commit -m 'Add new section to example.qmd on testbranch'"
+
+4. Then I Push the testbranch to the remote GitHub repository using the command : "git push -u origin testbranch" . The testbranch and its changes are now on GitHub.
+
+This can be confirmed by visiting my GitHub repo and checking under the "branches" dropdown.
+```{r}
+knitr::include_graphics("Screenshots/Screenshot3.png")
+```
+
+### Step 4 : Creating a Data Folder, Adding Assignment 1 Data, and Amending Previous Commit
+
+1. Created a Data folder in my system and added the Data file from Assignment 1 to that folder. The csv file is called "child-mortality.csv"
+
+2. Staged the new folder and contents using the command: git add Data
+
+3. Amended with a new commit message : git commit --amend -m 'Add data folder from Assignment 1 to the previous commit'
+ : Include the staged data folder in the last commit and replaces the old message with the new one
+
+4. Pushed the amended commit to GitHub Because I rewrote the last commit, I need to force push : git push --force
+
+```{r}
+knitr::include_graphics("Screenshots/Screenshot4.png")
+```
+
+
+### Step 5: Switch to main, create a conflicting change, and push it
+
+
+
+
+
+
+>>>>>>> testbranch
 
