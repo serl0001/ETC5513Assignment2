@@ -140,8 +140,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<ol start="2" type="1">
-<li></li>
+<p>2.To initialize a new Git repository in the current directory, I run the command “git init” in the terminal. This command sets up Git tracking by creating a hidden subdirectory named .git, which contains all the files and metadata Git needs to manage the repository. From this point on, the folder becomes a Git repository, and you can start adding files, committing changes, and collaborating using Git.</p>
+<ol start="3" type="1">
+<li><p>Not all files in a project should be tracked by Git—for example, temporary or system-specific files like the “.Rproj.user/” folder in RStudio. To prevent Git from tracking such files, I created a special text file named .gitignore in the root directory of my project. In this file,I add the line “.Rproj.user/” to tell Git to ignore that folder and everything inside it. Once I saved the .gitignore file, I test whether it’s working by running the command git status. If .Rproj.user/ no longer appears in the list of untracked files, it means the .gitignore rule is working correctly. This helps keep your repository clean and avoids committing unnecessary files.</p></li>
+<li><p>Next I add the files using the command “git add .” and commit them using the command “git commit -m ‘Initial push’”</p></li>
+<li><p>I created a new repository on GitHub without initializing it with a README, .gitignore, or license. Then, I copied the repository’s SSH URL to link it with my local project.</p></li>
+<li><p>I used “git branch” to view all the branches in my repository and identify the currently active one, which is marked with an asterisk. This helps me manage different lines of development. Then, I ran “git log –oneline” to see a simplified history of commits, where each commit is displayed on a single line with its short hash and message. This command makes it easy to quickly review the commit history in a compact format.</p></li>
+<li><p>I linked my local repository to the remote GitHub repository using : “git remote add origin git@github.com:serl0001/ETC5513Assignment2.git”</p></li>
+<li><p>And I push the entire folder to the git repository using the command “git push -u origin master” which will now present all our files in the gir repository.</p></li>
 </ol>
 </section>
 </section>

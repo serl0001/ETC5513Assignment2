@@ -57,7 +57,34 @@ In this file,I add the line ".Rproj.user/" to tell Git to ignore that folder and
 2. In the example.qmd in RStudio I add a few changes and save the document. 
 
 3. Then I add and commit the modified files using the commands: "git add example.qmd
-git commit -m "Add new section to example.qmd on testbranch""
+git commit -m 'Add new section to example.qmd on testbranch'"
+
+4. Then I Push the testbranch to the remote GitHub repository using the command : "git push -u origin testbranch" . The testbranch and its changes are now on GitHub.
+
+This can be confirmed by visiting my GitHub repo and checking under the "branches" dropdown.
+```{r}
+knitr::include_graphics("Screenshots/Screenshot3.png")
+```
+
+### Step 4 : Creating a Data Folder, Adding Assignment 1 Data, and Amending Previous Commit
+
+1. Created a Data folder in my system and added the Data file from Assignment 1 to that folder. The csv file is called "child-mortality.csv"
+
+2. Staged the new folder and contents using the command: git add Data
+
+3. Amended with a new commit message : git commit --amend -m 'Add data folder from Assignment 1 to the previous commit'
+ : Include the staged data folder in the last commit and replaces the old message with the new one
+
+4. Pushed the amended commit to GitHub Because I rewrote the last commit, I need to force push : git push --force
+
+```{r}
+knitr::include_graphics("Screenshots/Screenshot4.png")
+```
+
+
+### Step 5: Switch to main, create a conflicting change, and push it
+
+
 
 
 
