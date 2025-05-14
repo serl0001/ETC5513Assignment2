@@ -1,0 +1,40 @@
+---
+title: "ETC5513 Assignment 2"
+author: "Sandhya Erland Chandrasekar"
+format: html
+---
+
+# Guide that demonstrates Knowledge on git, GitHub and the command line interface
+
+
+### Step 1 : Creating RStudio Project & Knit example.qmd into a HTML file
+
+1. Opened RStudio and clicked on File -> New Project -> New Directory -> New Project.
+
+2. Named the folder "ETC5513Assignment2" and saved it in a folder in the system. Clicked on create Project.
+
+3. Clicked on File -> New File -> Quarto Document and named the Document as "example.qmd".
+
+4. In the new .qmd file, I updated the YAML header by setting the title to "ETC5513 Assignment 2" and the author to "Sandhya Erland Chandrasekar". I also specified the format as HTML, so that when the file is rendered, it generates an HTML document which is saved in the local project folder.
+
+5. The result for the knitted file is provided via a screenshot. 
+
+```{r}
+knitr::include_graphics("Screenshots/Screenshot1.png")
+```
+
+
+
+### Step 2 : Initialising Git and Pushing it to GitHub
+
+1. To create a git repository from existing work first I opened the terminal and navigated it to the root directory of my existing project using the cd command. 
+```{r}
+knitr::include_graphics("Screenshots/Screenshot2.png")
+```
+
+
+2.To initialize a new Git repository in the current directory, I run the command "git init" in the terminal. This command sets up Git tracking by creating a hidden subdirectory named .git, which contains all the files and metadata Git needs to manage the repository. From this point on, the folder becomes a Git repository, and you can start adding files, committing changes, and collaborating using Git.
+
+3. Not all files in a project should be tracked by Git—for example, temporary or system-specific files like the ".Rproj.user/" folder in RStudio. To prevent Git from tracking such files, I created a special text file named .gitignore in the root directory of my project. 
+In this file,I add the line ".Rproj.user/" to tell Git to ignore that folder and everything inside it. Once I saved the .gitignore file, I test whether it’s working by running the command git status. If .Rproj.user/ no longer appears in the list of untracked files, it means the .gitignore rule is working correctly. This helps keep your repository clean and avoids committing unnecessary files.
+
