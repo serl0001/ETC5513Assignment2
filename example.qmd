@@ -38,3 +38,5 @@ knitr::include_graphics("Screenshots/Screenshot2.png")
 3. Not all files in a project should be tracked by Git—for example, temporary or system-specific files like the ".Rproj.user/" folder in RStudio. To prevent Git from tracking such files, I created a special text file named .gitignore in the root directory of my project. 
 In this file,I add the line ".Rproj.user/" to tell Git to ignore that folder and everything inside it. Once I saved the .gitignore file, I test whether it’s working by running the command git status. If .Rproj.user/ no longer appears in the list of untracked files, it means the .gitignore rule is working correctly. This helps keep your repository clean and avoids committing unnecessary files.
 
+4. Next I add the files using the command "git add ." and commit them using the command "git commit -m 'Initial push' "
+
