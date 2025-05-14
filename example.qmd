@@ -40,3 +40,7 @@ In this file,I add the line ".Rproj.user/" to tell Git to ignore that folder and
 
 4. Next I add the files using the command "git add ." and commit them using the command "git commit -m 'Initial push' "
 
+STEP 4 AND STEP 5 ARE MISSING 
+
+THEY ARE PREST IN TEST BRANCH 
+
