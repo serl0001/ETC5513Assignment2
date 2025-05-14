@@ -82,12 +82,70 @@ knitr::include_graphics("Screenshots/Screenshot4.png")
 ```
 
 
-### Step 5: Switch to main, create a conflicting change, and push it
+### Step 5: Switch to master, create a conflicting change, and push it
+
+1. Switched back to the master branch using the command : "git switch master". Which switches to the master branch and the changes made int the test branch are not visible 
+
+2. Modified example.qmd in a conflicting way . Now, in main, I edited the same part of example.qmd (e.g., the same section heading) to something different and saved the qmd file.
+
+3. Now I add and commit and push the changes to the remote repository via the terminal : git add .
+git commit -m "Modify example.qmd in a conflicting way on main branch" 
+git push origin master
+
+4. I’ve now created a conflict scenario by editing the same part of example.qmd on both main and testbranch.
+
+```{r}
+knitr::include_graphics("Screenshots/Screenshot5.png")
+```
 
 
 
+### Step 6: Merge testbranch into main and Resolve the Conflict
+
+1. Merged testbranch into main using the command : git merge testbranch. The following screens shot displays the message that is thrown.
+```{r}
+knitr::include_graphics("Screenshots/Screenshot6.png")
+```
+
+Git has found a merge conflict in example.qmd.
+
+2. I open and fix the conflict in example.qmd . Git marks the conflict like this:
+
+```{r}
+knitr::include_graphics("Screenshots/Screenshot7.png")
+```
+3. I then fixed the conflicts bu removing the marked lines and conflict marker.
+
+4. And then I add , Commit and Push it to the master branch.
 
 
+### Step 7: Create and Push Annotated Tag v1.0 on main
 
->>>>>>> testbranch
+1. Make sure I am on the master branch by using the command : git branch. The terminal points to the branch it is currently on (i.e master)
+
+2.Created an annotated tag using the command : git tag -a v1.0 -m "First stable version after merging testbranch"
+
+This creates an annotated tag (-a), which includes a message (-m) and metadata like my name, email, and date.
+
+3. Pushed the tag to GitHub : git push origin v1.0
+
+
+```{r}
+knitr::include_graphics("Screenshots/Screenshot8.png")
+```
+
+```{r}
+knitr::include_graphics("Screenshots/Screenshot9.png")
+```
+
+
+### Step 8: Delete testbranch Locally and Remotely
+
+1. For deleting the testbranch locally, I should not be in the testbranch (since the branch is already pointing to the master branch I leave it as it is). Using the command : git branch -d testbranch - I can delete the test branch locally 
+```{r}
+knitr::include_graphics("Screenshots/Screenshot10.png")
+```
+
+
+2. For deleting the testbranch on GitHub (remote) : git push origin --delete testbranch : removes testbranch from my GitHub repository.
 
