@@ -140,15 +140,242 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>2.To initialize a new Git repository in the current directory, I run the command “git init” in the terminal. This command sets up Git tracking by creating a hidden subdirectory named .git, which contains all the files and metadata Git needs to manage the repository. From this point on, the folder becomes a Git repository, and you can start adding files, committing changes, and collaborating using Git.</p>
-<ol start="3" type="1">
-<li><p>Not all files in a project should be tracked by Git—for example, temporary or system-specific files like the “.Rproj.user/” folder in RStudio. To prevent Git from tracking such files, I created a special text file named .gitignore in the root directory of my project. In this file,I add the line “.Rproj.user/” to tell Git to ignore that folder and everything inside it. Once I saved the .gitignore file, I test whether it’s working by running the command git status. If .Rproj.user/ no longer appears in the list of untracked files, it means the .gitignore rule is working correctly. This helps keep your repository clean and avoids committing unnecessary files.</p></li>
-<li><p>Next I add the files using the command “git add .” and commit them using the command “git commit -m ‘Initial push’”</p></li>
-<li><p>I created a new repository on GitHub without initializing it with a README, .gitignore, or license. Then, I copied the repository’s SSH URL to link it with my local project.</p></li>
-<li><p>I used “git branch” to view all the branches in my repository and identify the currently active one, which is marked with an asterisk. This helps me manage different lines of development. Then, I ran “git log –oneline” to see a simplified history of commits, where each commit is displayed on a single line with its short hash and message. This command makes it easy to quickly review the commit history in a compact format.</p></li>
-<li><p>I linked my local repository to the remote GitHub repository using : “git remote add origin git@github.com:serl0001/ETC5513Assignment2.git”</p></li>
-<li><p>And I push the entire folder to the git repository using the command “git push -u origin master” which will now present all our files in the gir repository.</p></li>
+<ol start="2" type="1">
+<li><p>I initialized a Git repository in the current directory with git init. This created a hidden .git folder, enabling Git to track changes and manage version control.</p></li>
+<li><p>To avoid tracking unnecessary files like .Rproj.user/, I created a .gitignore file and added .Rproj.user/ to it. I verified it with git status, ensuring it no longer appeared as untracked.</p></li>
+<li><p>I staged all files using git add . and committed them with git commit -m “Initial push”.</p></li>
+<li><p>On GitHub, I created a new repository (without README, .gitignore, or license), then copied its SSH URL.</p></li>
+<li><p>I used git branch to view the current branch and git log –oneline for a concise commit history.</p></li>
+<li><p>I linked the local repo to GitHub using: git remote add origin git@github.com:serl0001/ETC5513Assignment2.git</p></li>
+<li><p>Finally, I pushed the project with: git push -u origin master This uploaded all local files to the GitHub repository.</p></li>
 </ol>
+</section>
+<section id="step-3-initialising-git-and-pushing-it-to-github" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-initialising-git-and-pushing-it-to-github">Step 3 : Initialising Git and Pushing it to GitHub</h3>
+<ol type="1">
+<li><p>I Opened my terminal and ran the command : “git switch -c testbranch” . This creates a new branch called testbranch and switches to it.</p></li>
+<li><p>In the example.qmd in RStudio I add a few changes and save the document.</p></li>
+<li><p>Then I add and commit the modified files using the commands: “git add example.qmd git commit -m ‘Add new section to example.qmd on testbranch’”</p></li>
+<li><p>Then I Push the testbranch to the remote GitHub repository using the command : “git push -u origin testbranch” . The testbranch and its changes are now on GitHub.</p></li>
+</ol>
+<p>This can be confirmed by visiting my GitHub repo and checking under the “branches” dropdown.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"Screenshots/Screenshot3.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Screenshots/Screenshot3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="step-4-creating-a-data-folder-adding-assignment-1-data-and-amending-previous-commit" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-creating-a-data-folder-adding-assignment-1-data-and-amending-previous-commit">Step 4 : Creating a Data Folder, Adding Assignment 1 Data, and Amending Previous Commit</h3>
+<ol type="1">
+<li><p>Created a Data folder in my system and added the Data file from Assignment 1 to that folder. The csv file is called “child-mortality.csv”</p></li>
+<li><p>Staged the new folder and contents using the command: git add Data</p></li>
+<li><dl>
+<dt>Amended with a new commit message : git commit –amend -m ‘Add data folder from Assignment 1 to the previous commit’</dt>
+<dd>
+Include the staged data folder in the last commit and replaces the old message with the new one
+</dd>
+</dl></li>
+<li><p>Pushed the amended commit to GitHub Because I rewrote the last commit, I need to force push : git push –force</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"Screenshots/Screenshot4.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Screenshots/Screenshot4.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="step-5-switch-to-master-create-a-conflicting-change-and-push-it" class="level3">
+<h3 class="anchored" data-anchor-id="step-5-switch-to-master-create-a-conflicting-change-and-push-it">Step 5: Switch to master, create a conflicting change, and push it</h3>
+<ol type="1">
+<li><p>Switched back to the master branch using the command : “git switch master”. Which switches to the master branch and the changes made int the test branch are not visible</p></li>
+<li><p>Modified example.qmd in a conflicting way . Now, in main, I edited the same part of example.qmd (e.g., the same section heading) to something different and saved the qmd file.</p></li>
+<li><p>Now I add and commit and push the changes to the remote repository via the terminal : git add . git commit -m “Modify example.qmd in a conflicting way on main branch” git push origin master</p></li>
+<li><p>I’ve now created a conflict scenario by editing the same part of example.qmd on both main and testbranch.</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"Screenshots/Screenshot5.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Screenshots/Screenshot5.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="step-6-merge-testbranch-into-main-and-resolve-the-conflict" class="level3">
+<h3 class="anchored" data-anchor-id="step-6-merge-testbranch-into-main-and-resolve-the-conflict">Step 6: Merge testbranch into main and Resolve the Conflict</h3>
+<ol type="1">
+<li>Merged testbranch into main using the command : git merge testbranch. The following screens shot displays the message that is thrown.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"Screenshots/Screenshot6.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Screenshots/Screenshot6.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Git has found a merge conflict in example.qmd.</p>
+<ol start="2" type="1">
+<li>I open and fix the conflict in example.qmd . Git marks the conflict like this:</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"Screenshots/Screenshot7.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Screenshots/Screenshot7.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="3" type="1">
+<li><p>I then fixed the conflicts bu removing the marked lines and conflict marker.</p></li>
+<li><p>And then I add , Commit and Push it to the master branch.</p></li>
+</ol>
+</section>
+<section id="step-7-create-and-push-annotated-tag-v1.0-on-main" class="level3">
+<h3 class="anchored" data-anchor-id="step-7-create-and-push-annotated-tag-v1.0-on-main">Step 7: Create and Push Annotated Tag v1.0 on main</h3>
+<ol type="1">
+<li><p>I verified I was on the master branch using the command: git branch The current branch is marked with an asterisk (*), confirming I was on master.</p></li>
+<li><p>I created an annotated tag with: git tag -a v1.0 -m “First stable version after merging testbranch” This tag includes a custom message and stores metadata like my name, email, and the date, marking a stable point in the commit history.</p></li>
+<li><p>I then pushed the tag to GitHub using: git push origin v1.0 This makes the v1.0 tag available in the remote repository for reference or releases.</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"Screenshots/Screenshot8.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Screenshots/Screenshot8.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"Screenshots/Screenshot9.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Screenshots/Screenshot9.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="step-8-delete-testbranch-locally-and-remotely" class="level3">
+<h3 class="anchored" data-anchor-id="step-8-delete-testbranch-locally-and-remotely">Step 8: Delete testbranch Locally and Remotely</h3>
+<ol type="1">
+<li>For deleting the testbranch locally, I should not be in the testbranch (since the branch is already pointing to the master branch I leave it as it is). Using the command : git branch -d testbranch - I can delete the test branch locally</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"Screenshots/Screenshot10.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Screenshots/Screenshot10.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>For deleting the testbranch on GitHub (remote) : git push origin –delete testbranch : removes testbranch from my GitHub repository.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"Screenshots/Screenshot11.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Screenshots/Screenshot11.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"Screenshots/Screenshot12.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Screenshots/Screenshot12.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="step-9-the-commit-log-in-condensed-form-in-the-terminal" class="level3">
+<h3 class="anchored" data-anchor-id="step-9-the-commit-log-in-condensed-form-in-the-terminal">Step 9: The commit log in condensed form in the terminal</h3>
+<ol type="1">
+<li>To show the commit log in condenced form in the terminalI used the command : git log –oneline –graph –decorate –all</li>
+</ol>
+<p>Which shows:</p>
+<p>–oneline: Each commit appears as a single line</p>
+<p>–graph: Visualizes branch and merge structure</p>
+<p>–decorate: Shows branch names and tags</p>
+<p>–all: Includes all branches, not just the current one</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"Screenshots/Screenshot13.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Screenshots/Screenshot13.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="step-10-add-a-plot-in-example.qmd-commit-it-then-undo-the-commit-keep-changes" class="level3">
+<h3 class="anchored" data-anchor-id="step-10-add-a-plot-in-example.qmd-commit-it-then-undo-the-commit-keep-changes">Step 10: Add a Plot in example.qmd, Commit It, Then Undo the Commit (Keep Changes)</h3>
+<p>1.Made a Change in example.qmd and added this new section :</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="example_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Add and committed the changes throught the terminal.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"Screenshots/Screenshot14.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Screenshots/Screenshot14.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="3" type="1">
+<li>To Undo the Commit (But Keep Your Changes) I Used: –soft reset to undo the commit, but keep all staged changes: git reset –soft HEAD~1 This command:</li>
+</ol>
+<p>Undo the last commit</p>
+<p>Leaves your changes staged (still tracked and not lost)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"Screenshots/Screenshot15.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Screenshots/Screenshot15.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 </section>
 

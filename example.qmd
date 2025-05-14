@@ -1,7 +1,9 @@
 ---
 title: "ETC5513 Assignment 2"
 author: "Sandhya Erland Chandrasekar"
-format: html
+format:
+  pdf: default
+  html: default
 ---
 
 # Guide that demonstrates Knowledge on git, GitHub and the command line interface
@@ -28,71 +30,89 @@ knitr::include_graphics("Screenshots/Screenshot1.png")
 ### Step 2 : Initialising Git and Pushing it to GitHub
 
 1. To create a git repository from existing work first I opened the terminal and navigated it to the root directory of my existing project using the cd command. 
+
+
 ```{r}
 knitr::include_graphics("Screenshots/Screenshot2.png")
 ```
 
+2. I initialized a Git repository in the current directory with git init. This created a hidden .git folder, enabling Git to track changes and manage version control.
 
+3. To avoid tracking unnecessary files like .Rproj.user/, I created a .gitignore file and added .Rproj.user/ to it. I verified it with git status, ensuring it no longer appeared as untracked.
 
-2.To initialize a new Git repository in the current directory, I run the command "git init" in the terminal. This command sets up Git tracking by creating a hidden subdirectory named .git, which contains all the files and metadata Git needs to manage the repository. From this point on, the folder becomes a Git repository, and you can start adding files, committing changes, and collaborating using Git.
+4. I staged all files using git add . and committed them with git commit -m "Initial push".
 
-3. Not all files in a project should be tracked by Git—for example, temporary or system-specific files like the ".Rproj.user/" folder in RStudio. To prevent Git from tracking such files, I created a special text file named .gitignore in the root directory of my project. 
-In this file,I add the line ".Rproj.user/" to tell Git to ignore that folder and everything inside it. Once I saved the .gitignore file, I test whether it’s working by running the command git status. If .Rproj.user/ no longer appears in the list of untracked files, it means the .gitignore rule is working correctly. This helps keep your repository clean and avoids committing unnecessary files.
+5. On GitHub, I created a new repository (without README, .gitignore, or license), then copied its SSH URL.
 
-4. Next I add the files using the command "git add ." and commit them using the command "git commit -m 'Initial push' "
+6. I used git branch to view the current branch and git log --oneline for a concise commit history.
 
-5. I created a new repository on GitHub without initializing it with a README, .gitignore, or license. Then, I copied the repository’s SSH URL to link it with my local project.
+7. I linked the local repo to GitHub using:
+git remote add origin git@github.com:serl0001/ETC5513Assignment2.git
 
-6. I used "git branch" to view all the branches in my repository and identify the currently active one, which is marked with an asterisk. This helps me manage different lines of development. Then, I ran "git log --oneline" to see a simplified history of commits, where each commit is displayed on a single line with its short hash and message. This command makes it easy to quickly review the commit history in a compact format.
-
-7. I linked my local repository to the remote GitHub repository using : "git remote add origin git@github.com:serl0001/ETC5513Assignment2.git"
-
-8. And I push the entire folder to the git repository using the command "git push -u origin master" which will now present all our files in the gir repository.
-
+8. Finally, I pushed the project with:
+git push -u origin master
+This uploaded all local files to the GitHub repository.
 
 ### Step 3 : Initialising Git and Pushing it to GitHub
 
 1. I Opened my terminal and ran the command : "git switch -c testbranch" . This creates a new branch called testbranch and switches to it.
 
-2. In the example.qmd in RStudio I add a few changes and save the document. 
 
+2. In the example.qmd in RStudio I add a few changes and save the document. 
+ 
+ 
 3. Then I add and commit the modified files using the commands: "git add example.qmd
 git commit -m 'Add new section to example.qmd on testbranch'"
+
 
 4. Then I Push the testbranch to the remote GitHub repository using the command : "git push -u origin testbranch" . The testbranch and its changes are now on GitHub.
 
 This can be confirmed by visiting my GitHub repo and checking under the "branches" dropdown.
+
 ```{r}
 knitr::include_graphics("Screenshots/Screenshot3.png")
 ```
 
+
+
 ### Step 4 : Creating a Data Folder, Adding Assignment 1 Data, and Amending Previous Commit
+
 
 1. Created a Data folder in my system and added the Data file from Assignment 1 to that folder. The csv file is called "child-mortality.csv"
 
+
 2. Staged the new folder and contents using the command: git add Data
+
 
 3. Amended with a new commit message : git commit --amend -m 'Add data folder from Assignment 1 to the previous commit'
  : Include the staged data folder in the last commit and replaces the old message with the new one
 
+
 4. Pushed the amended commit to GitHub Because I rewrote the last commit, I need to force push : git push --force
+
 
 ```{r}
 knitr::include_graphics("Screenshots/Screenshot4.png")
 ```
 
 
+
 ### Step 5: Switch to master, create a conflicting change, and push it
+
 
 1. Switched back to the master branch using the command : "git switch master". Which switches to the master branch and the changes made int the test branch are not visible 
 
+
 2. Modified example.qmd in a conflicting way . Now, in main, I edited the same part of example.qmd (e.g., the same section heading) to something different and saved the qmd file.
+
 
 3. Now I add and commit and push the changes to the remote repository via the terminal : git add .
 git commit -m "Modify example.qmd in a conflicting way on main branch" 
 git push origin master
 
+
 4. I’ve now created a conflict scenario by editing the same part of example.qmd on both main and testbranch.
+
 
 ```{r}
 knitr::include_graphics("Screenshots/Screenshot5.png")
@@ -102,34 +122,41 @@ knitr::include_graphics("Screenshots/Screenshot5.png")
 
 ### Step 6: Merge testbranch into main and Resolve the Conflict
 
+
 1. Merged testbranch into main using the command : git merge testbranch. The following screens shot displays the message that is thrown.
 ```{r}
 knitr::include_graphics("Screenshots/Screenshot6.png")
 ```
 
+
 Git has found a merge conflict in example.qmd.
+
 
 2. I open and fix the conflict in example.qmd . Git marks the conflict like this:
 
 ```{r}
 knitr::include_graphics("Screenshots/Screenshot7.png")
 ```
+
 3. I then fixed the conflicts bu removing the marked lines and conflict marker.
+
 
 4. And then I add , Commit and Push it to the master branch.
 
 
+
 ### Step 7: Create and Push Annotated Tag v1.0 on main
+1. I verified I was on the master branch using the command:
+git branch
+The current branch is marked with an asterisk (*), confirming I was on master.
 
-1. Make sure I am on the master branch by using the command : git branch. The terminal points to the branch it is currently on (i.e master)
+2. I created an annotated tag with:
+git tag -a v1.0 -m "First stable version after merging testbranch"
+This tag includes a custom message and stores metadata like my name, email, and the date, marking a stable point in the commit history.
 
-2.Created an annotated tag using the command : git tag -a v1.0 -m "First stable version after merging testbranch"
-
-This creates an annotated tag (-a), which includes a message (-m) and metadata like my name, email, and date.
-
-3. Pushed the tag to GitHub : git push origin v1.0
-
-
+3. I then pushed the tag to GitHub using:
+git push origin v1.0
+This makes the v1.0 tag available in the remote repository for reference or releases.
 ```{r}
 knitr::include_graphics("Screenshots/Screenshot8.png")
 ```
@@ -139,13 +166,71 @@ knitr::include_graphics("Screenshots/Screenshot9.png")
 ```
 
 
+
 ### Step 8: Delete testbranch Locally and Remotely
 
 1. For deleting the testbranch locally, I should not be in the testbranch (since the branch is already pointing to the master branch I leave it as it is). Using the command : git branch -d testbranch - I can delete the test branch locally 
+
+
 ```{r}
 knitr::include_graphics("Screenshots/Screenshot10.png")
 ```
 
 
 2. For deleting the testbranch on GitHub (remote) : git push origin --delete testbranch : removes testbranch from my GitHub repository.
+```{r}
+knitr::include_graphics("Screenshots/Screenshot11.png")
+```
+```{r}
+knitr::include_graphics("Screenshots/Screenshot12.png")
+```
+
+### Step 9: The commit log in condensed form in the terminal
+
+1. To show the commit log in condenced form in the terminalI used the command : git log --oneline --graph --decorate --all
+
+Which shows:
+
+--oneline: Each commit appears as a single line
+
+--graph: Visualizes branch and merge structure
+
+--decorate: Shows branch names and tags
+
+--all: Includes all branches, not just the current one
+
+```{r}
+knitr::include_graphics("Screenshots/Screenshot13.png")
+```
+
+
+
+### Step 10: Add a Plot in example.qmd, Commit It, Then Undo the Commit (Keep Changes)
+
+
+1.Made a Change in example.qmd and added this new section :
+
+
+```{r}
+plot(mtcars)
+```
+
+2. Add and committed the changes throught the terminal.
+
+```{r}
+knitr::include_graphics("Screenshots/Screenshot14.png")
+```
+
+
+3. To Undo the Commit (But Keep Your Changes) I Used: --soft reset to undo the commit, but keep all staged changes: git reset --soft HEAD~1
+This command: 
+
+Undo the last commit
+
+Leaves your changes staged (still tracked and not lost)
+```{r}
+knitr::include_graphics("Screenshots/Screenshot15.png")
+```
+
+
 
